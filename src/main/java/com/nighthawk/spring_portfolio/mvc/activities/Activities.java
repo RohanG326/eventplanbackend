@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.activites;
+package com.nighthawk.spring_portfolio.mvc.activities;
 
 import java.time.LocalDate;
 import java.time.Period;

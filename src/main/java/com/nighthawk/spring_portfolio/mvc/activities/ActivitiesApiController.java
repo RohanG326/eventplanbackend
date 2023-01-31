@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.activites;
+package com.nighthawk.spring_portfolio.mvc.activities;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
-import java.text.SimpleDateFormat;
 
 @RestController
 @RequestMapping("/api/activities")

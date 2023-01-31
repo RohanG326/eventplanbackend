@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.activites;
+package com.nighthawk.spring_portfolio.mvc.activities;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
