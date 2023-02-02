@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @RestController
-@RequestMapping("/api/activities")
+@RequestMapping("/api/activities/")
 public class ActivitiesApiController {
     /*
     #### RESTful API ####
@@ -60,7 +60,7 @@ public class ActivitiesApiController {
     /*
     POST Aa record by Requesting Parameters from URI
      */
-    @PostMapping( "/post")
+    @PostMapping( "/post/")
     public ResponseEntity<Object> postActivities(@RequestParam("event") String event,
                                              @RequestParam("date") String date,
                                              @RequestParam("contact") String contact,
@@ -74,7 +74,7 @@ public class ActivitiesApiController {
     /*
     The personSearch API looks across database for partial match to term (k,v) passed by RequestEntity body
      */
-    @PostMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(value = "/search/", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Object> personSearch(@RequestBody final Map<String,String> map) {
         // extract term from RequestEntity
         String term = (String) map.get("term");

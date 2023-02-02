@@ -24,10 +24,7 @@ public interface ActivitiesJpaRepository extends JpaRepository<Activities, Long>
      */
 
     // Custom JPA query
-    @Query(
-            value = "SELECT * FROM Activities p WHERE p.event LIKE ?1",
-            nativeQuery = true)
-    List<Activities> findByLikeTermNative(String term);
+
     /*
         https://www.baeldung.com/spring-data-jpa-query
      */
