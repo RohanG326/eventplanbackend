@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.security;
+package com.nighthawk.spring_portfolio;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import com.nighthawk.spring_portfolio.mvc.jwt.JwtAuthenticationEntryPoint;
@@ -69,9 +69,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			// list the requests/endpoints need to be authenticated
 			.authorizeRequests()
 				.antMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
-				.antMatchers("/api/person/**", "/api/activities/**").authenticated()
+				.antMatchers("/api/person/**").authenticated()
 				.and()
-			// support cors on localhost
+			// support cors
 			.cors().and()
 			.headers()
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Credentials", "true"))
