@@ -10,7 +10,7 @@ import java.util.*;
 import java.text.SimpleDateFormat;
 
 @RestController
-@RequestMapping("/api/person/")
+@RequestMapping("/api/person")
 public class PersonApiController {
     //     @Autowired
     // private JwtTokenUtil jwtGen;
@@ -63,7 +63,7 @@ public class PersonApiController {
     /*
     POST Aa record by Requesting Parameters from URI
      */
-    @PostMapping( "/post/")
+    @PostMapping( "/post")
     public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
                                              @RequestParam("password") String password,
                                              @RequestParam("name") String name,
