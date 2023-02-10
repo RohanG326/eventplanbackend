@@ -18,6 +18,11 @@ public interface ActivitiesJpaRepository extends JpaRepository<Activities, Long>
 
     // JPA query, findBy does JPA magic with "Name", "Containing", "Or", "Email", "IgnoreCase"
     List<Activities> findByEventContainingIgnoreCase(String event);
+
+    @Query(
+            value = "SELECT * FROM Activities p WHERE p.event LIKE ?1",
+            nativeQuery = true)
+    List<Activities> findByLikeTermNative(String term);
     /* Custom JPA query articles, there are articles that show custom SQL as well
        https://springframework.guru/spring-data-jpa-query/
        https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
