@@ -80,7 +80,7 @@ public class ActivitiesApiController {
         String term = (String) map.get("term");
 
         // JPA query to filter on term
-        List<Activities> list = repository.findByEventContainingIgnoreCase(term);
+        List<Activities> list = repository.findByEventIgnoreCase(term);
 
         // return resulting list and status, error checking should be added
         return new ResponseEntity<>(list, HttpStatus.OK);

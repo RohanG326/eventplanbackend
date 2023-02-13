@@ -13,24 +13,13 @@ Extends the JpaRepository interface from Spring Data JPA.
  */
 public interface ActivitiesJpaRepository extends JpaRepository<Activities, Long> {
     Activities findByEvent(String event);
-
     List<Activities> findAllByOrderByEventAsc();
-
-    // JPA query, findBy does JPA magic with "Name", "Containing", "Or", "Email", "IgnoreCase"
-    List<Activities> findByEventContainingIgnoreCase(String event);
-
+    List<Activities> findByEventIgnoreCase(String event);
+    
     @Query(
             value = "SELECT * FROM Activities p WHERE p.event LIKE ?1",
             nativeQuery = true)
     List<Activities> findByLikeTermNative(String term);
-    /* Custom JPA query articles, there are articles that show custom SQL as well
-       https://springframework.guru/spring-data-jpa-query/
-       https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
-     */
 
-    // Custom JPA query
 
-    /*
-        https://www.baeldung.com/spring-data-jpa-query
-     */
 }

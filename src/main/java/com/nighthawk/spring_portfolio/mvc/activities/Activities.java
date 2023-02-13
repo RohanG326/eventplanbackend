@@ -97,6 +97,7 @@ public class Activities {
 
     public Activities() {
     }
+
     
     public static Activities[] init() {
 
