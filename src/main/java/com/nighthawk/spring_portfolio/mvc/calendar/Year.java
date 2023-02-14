@@ -25,6 +25,7 @@ class Year {
    public boolean getIsLeapYear(int year) {
       return APCalendar.isLeapYear(year);
    }
+   
    private void setIsLeapYear(int year) {  // this is private to avoid tampering
       this.isLeapYear = APCalendar.isLeapYear(year);
    }
