@@ -9,3 +9,7 @@ public interface NoteJpaRepository extends JpaRepository<Note, Long> {
     List<Note> findAllByPerson(Person p);
 }
 
+
+
+
+

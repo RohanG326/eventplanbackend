@@ -23,3 +23,7 @@ public class Note {
     @Column(columnDefinition="TEXT")
     private String text;
 }
+
+
+
+

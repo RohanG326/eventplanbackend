@@ -46,6 +46,7 @@ public class CovidApiController {
                 this.status = HttpStatus.OK;  //200 success
                 this.last_run = today;
             }
+            
             catch (Exception e) {  //capture failure info
                 HashMap<String, String> status = new HashMap<>();
                 status.put("status", "RapidApi failure: " + e);

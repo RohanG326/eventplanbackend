@@ -125,3 +125,6 @@ public class LightBoard {
         System.out.println(lightBoard.toColorPalette());
     }
 }
+
+
+
