@@ -15,6 +15,9 @@ import org.hibernate.annotations.Type;
 import org.hibernate.annotations.TypeDef;
 import com.vladmihalcea.hibernate.type.json.JsonType;
 
+import lombok.NonNull;
+
+
 
 @Entity
 @TypeDef(name = "json", typeClass = JsonType.class)
@@ -25,28 +28,23 @@ public class Activities {
 
     // email, password, roles are key attributes to login and authentication
     @NotEmpty
-    @Size(min = 5)
-    @Column(unique = true)
+    @Size(min = 5, max = 30)
     public String event;
 
-    @NotEmpty
-    @Size(min = 5)
-    @Column(unique = true)
+    @NonNull
+    @Size(min = 5, max = 30)
     public String date;
 
-    @NotEmpty
-    @Size(min = 5)
-    @Column(unique = true)
+    @NonNull
+    @Size(min = 5, max = 30)
     public String contact;
 
-    @NotEmpty
-    @Size(min = 5)
-    @Column(unique = true)
+    @NonNull
+    @Size(min = 5, max = 30)
     public String description;
 
-    @NotEmpty
-    @Size(min = 5)
-    @Column(unique = true)
+    @NonNull
+    @Size(min = 5, max = 30)
     public String location;
 
     public Activities(String event, String date, String contact, String description, String location) {
@@ -105,12 +103,19 @@ public class Activities {
         Activities p1 = new Activities();
         p1.setEvent("Golfing");
         p1.setDate("Feb 7th");
-        p1.setContact("Dave");
+        p1.setContact("Davesss");
         p1.setDescription("fun golf day");
         p1.setLocation("thousand oaks golf club");
+
+        Activities p2 = new Activities();
+        p2.setEvent("Golfing2");
+        p2.setDate("Feb 14th");
+        p2.setContact("Dave2ss");
+        p2.setDescription("fun golf day2");
+        p2.setLocation("thousand oaks golf club2");
         // adding Note to notes collection
         // Array definition and data initialization
-        Activities activities[] = {p1};
+        Activities activities[] = {p1, p2};
         return(activities);
     }
 
@@ -119,8 +124,8 @@ public class Activities {
         Activities activities[] = init();
 
         // iterate using "enhanced for loop"
-        for( Activities person : activities) {
-            System.out.println(person);  // print object
+        for( Activities test : activities) {
+            System.out.println(test);  // print object
         }
     }
 }

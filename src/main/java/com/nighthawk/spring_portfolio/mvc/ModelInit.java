@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nighthawk.spring_portfolio.mvc.activities.Activities;
 import com.nighthawk.spring_portfolio.mvc.activities.ActivitiesJpaRepository;
-// import com.nighthawk.spring_portfolio.mvc.activities.ActivitiesDetailsService;
+import com.nighthawk.spring_portfolio.mvc.activities.ActivitiesDetailsService;
 import com.nighthawk.spring_portfolio.mvc.jokes.Jokes;
 import com.nighthawk.spring_portfolio.mvc.jokes.JokesJpaRepository;
 import com.nighthawk.spring_portfolio.mvc.note.Note;
@@ -22,8 +22,8 @@ public class ModelInit {
     @Autowired JokesJpaRepository jokesRepo;
     @Autowired NoteJpaRepository noteRepo;
     @Autowired PersonDetailsService personService;
-    // @Autowired ActivitiesDetailsService activitiesRepo;
-    @Autowired ActivitiesJpaRepository activitiesRepo;
+    @Autowired ActivitiesDetailsService activitiesRepo;
+    // @Autowired ActivitiesJpaRepository activitiesRepo;
 
     @Bean
     CommandLineRunner run() {  // The run() method will be executed after the application starts
@@ -51,13 +51,13 @@ public class ModelInit {
                     // noteRepo.save(n);  // JPA Save                  
                 }
             }
-            // Activities[] activitiesArray = Activities.init();
-            // for (Activities event : activitiesArray) {
-            //     List<Activities> test = activitiesRepo.list(event.getEvent());  // lookup
-            //     if (test.size() == 0) {
-            //     activitiesRepo.save(event);
-            // }
-            // }
+            Activities[] activitiesArray = Activities.init();
+            for (Activities event : activitiesArray) {
+                List<Activities> test = activitiesRepo.list(event.getEvent());  // lookup
+                if (test.size() == 0) {
+                activitiesRepo.save(event);
+            }
+            }
         };
     }
 }
