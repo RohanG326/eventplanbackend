@@ -1,0 +1,76 @@
+<!-- This page is illustrative and contains ideas about HTML formatting -->
+<!DOCTYPE HTML>
+<!-- Signals to the Layout Dialect which layout should be used to decorate this View -->
+<html xmlns:layout="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layouts/base}" lang="en">
+
+<head>
+    <title>Activities Form</title>
+</div>
+
+<!-- <body> -->
+<body>
+<th:block layout:fragment="body" th:remove="tag">    <!-- Page specific body additions -->
+    <div class="container">
+
+        <div class="row justify-content-md-center">
+            <h2>Welcome, Enter the new Activities details</h2>
+        </div>
+
+        <div class="row justify-content-md-center">
+            <div class="col8">
+                <div class="jumbotron">
+                    <h3>Create Activities</h3>
+                    <!-- ThymeLeaf allows activities abject of the Class Activities to be acted upon by the form
+                         This is known as a “bean-backed form” or "form-backing bean".
+                            th:object - the backend form object (bean object)
+                         There are fields in the Activities bean
+                            th:field="*{contact}"
+                            th:field="*{age}"
+                            th:field="*{dob}"
+                         Each field has supporting line to show errors in validation
+                            th:errors - form input errors added when validation errors occur
+                         Reference for CRUD
+                            https://www.baeldung.com/spring-boot-crud-thymeleaf
+                         Get started with dialects in 5 minutes
+                            https://www.thymeleaf.org/doc/articles/standarddialect5minutes.html
+                         Reference Bootstrap Form
+                            https://getbootstrap.com/docs/4.0/components/forms/#readonly-plain-text
+                     -->
+                    <form class="form-inline" action="#" th:action="@{/mvc/activities/create}" th:object="${activities}" method="POST">
+                        <div class="form-group mb-2 mr-sm-2">
+                            <label for="event">Event:</label>
+                            <input type="text" th:field="*{event}" id="event">
+                            <small th:if="${#fields.hasErrors('event')}" th:errors="*{event}">Event Error</small>
+                        </div>
+                        <div class="form-group mb-2 mr-sm-2">
+                            <label for="date">Date:</label>
+                            <input type="text" th:field="*{date}" id="date">
+                            <small th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date Error</small>
+                        </div>
+                        <div class="form-group mb-2 mr-sm-2">
+                            <label for="contact">Contact:</label>
+                            <input type="text" th:field="*{contact}" id="contact">
+                            <small th:if="${#fields.hasErrors('contact')}" th:errors="*{contact}">Contact Error</small>
+                        </div>
+                        <div class="form-group mb-2 mr-sm-2">
+                            <label for="description">Description:</label>
+                            <input type="text" th:field="*{description}" id="description">
+                            <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}">Description Error</small>
+                        </div>
+                        <div class="form-group mb-2 mr-sm-2">
+                            <label for="location">Location:</label>
+                            <input type="text" th:field="*{location}" id="location">
+                            <small th:if="${#fields.hasErrors('location')}" th:errors="*{location}">Location Error</small>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</th:block>
+</body>
+
+</html>
