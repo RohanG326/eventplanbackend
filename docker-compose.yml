@@ -15,3 +15,6 @@ volumes:
       o: bind
       type: none
       device: /home/ubuntu/tri2_T8_5962_SACSJazzyIsKing/volumes
+
+
+

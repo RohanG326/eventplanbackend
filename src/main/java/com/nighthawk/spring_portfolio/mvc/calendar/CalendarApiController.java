@@ -38,8 +38,3 @@ public class CalendarApiController {
 
     // add other methods
 }
-
-
-
-
-

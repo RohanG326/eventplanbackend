@@ -13,3 +13,5 @@ Extends the JpaRepository interface from Spring Data JPA.
 public interface ScrumJpaRepository extends JpaRepository<Scrum, Long> {
     List<Scrum> findAllByOrderByNameAsc();
 }
+
+

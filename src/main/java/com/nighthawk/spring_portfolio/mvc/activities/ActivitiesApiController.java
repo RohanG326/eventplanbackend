@@ -101,4 +101,3 @@ public class ActivitiesApiController {
         return "No activity exists";
     }
 }
-

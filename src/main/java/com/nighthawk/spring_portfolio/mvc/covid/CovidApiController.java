@@ -62,3 +62,11 @@ public class CovidApiController {
         return new ResponseEntity<>(body, status);
     }
 }
+
+
+
+
+
+
+
+

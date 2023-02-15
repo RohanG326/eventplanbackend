@@ -48,3 +48,6 @@ public class Scrum {
     @JoinColumn(name = "member4_id")
     public Person member4;
 }
+
+
+
