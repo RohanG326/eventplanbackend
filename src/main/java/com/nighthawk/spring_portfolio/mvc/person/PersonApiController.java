@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import java.util.*;
 import java.text.SimpleDateFormat;
@@ -22,6 +23,7 @@ public class PersonApiController {
     // Autowired enables Control to connect POJO Object through JPA
     @Autowired
     private PersonJpaRepository repository;
+    private PersonDetailsService sign_up_repository;
 
     /*
     GET List of People
@@ -64,10 +66,13 @@ public class PersonApiController {
     POST Aa record by Requesting Parameters from URI
      */
     @PostMapping( "/post")
-    public ResponseEntity<Object> postPerson(@RequestParam("email") String email,
-                                             @RequestParam("password") String password,
-                                             @RequestParam("name") String name,
-                                             @RequestParam("dob") String dobString) {
+    public ResponseEntity<Object> postPerson(@RequestBody final Map<String,String> map) {
+
+        String email = (String) map.get("email");
+        String password = (String) map.get("password");
+        String name = (String) map.get("name");
+        String dobString = (String) map.get("dob");
+
         Date dob;
         try {
             dob = new SimpleDateFormat("MM-dd-yyyy").parse(dobString);
@@ -75,9 +80,12 @@ public class PersonApiController {
             return new ResponseEntity<>(dobString +" error; try MM-dd-yyyy", HttpStatus.BAD_REQUEST);
         }
         // A person object WITHOUT ID will create a new record with default roles as student
-        Person person = new Person(email, password, name, dob);
-        repository.save(person);
-        return new ResponseEntity<>(email +" is created successfully", HttpStatus.CREATED);
+        String passwordEncrypt = BCrypt.hashpw(password, BCrypt.gensalt());
+        Person newUser = new Person(email, passwordEncrypt, name, dob);
+        repository.save(newUser);
+        //should hopefully create new user
+        return new ResponseEntity<>(newUser, HttpStatus.CREATED);
+
     }
 
     /*
