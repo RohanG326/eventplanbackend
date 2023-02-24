@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.nighthawk.spring_portfolio.mvc.jwt.JwtAuthenticationEntryPoint;
 import com.nighthawk.spring_portfolio.mvc.jwt.JwtRequestFilter;
 import com.nighthawk.spring_portfolio.mvc.person.PersonDetailsService;
+import com.nighthawk.spring_portfolio.mvc.activities.ActivitiesDetailsService;
+
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private PersonDetailsService personDetailsService;
 
+	@Autowired
+	private ActivitiesDetailsService ActivitiesDetailsService;
+
     @Bean  // Sets up password encoding style
     PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -70,7 +75,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.authorizeRequests()
 				.antMatchers("/mvc/person/update/**", "/mvc/person/delete/**").authenticated()
 				.antMatchers("/api/person/").authenticated()
-                .antMatchers("/api/activities/**").authenticated()
+                .antMatchers("/api/activities/post/**").authenticated()
+				.antMatchers("/api/activities/**").authenticated()
 				.and()
 			// support cors
 			.cors().and()
@@ -80,7 +86,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Headers", "Content-Type", "Authorization", "x-csrf-token"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-MaxAge", "600"))
 				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Methods", "POST", "GET", "OPTIONS", "HEAD"))
-				//.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "https://jazzyisking.github.io", "http://localhost:4000"))
+				.addHeaderWriter(new StaticHeadersWriter("Access-Control-Allow-Origin", "http://localhost:4000"))
 				.and()
 			.formLogin()
                 .loginPage("/login")

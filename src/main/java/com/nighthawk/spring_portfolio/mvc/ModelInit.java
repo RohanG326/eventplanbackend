@@ -6,7 +6,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.nighthawk.spring_portfolio.mvc.activities.Activities;
-import com.nighthawk.spring_portfolio.mvc.activities.ActivitiesJpaRepository;
 import com.nighthawk.spring_portfolio.mvc.activities.ActivitiesDetailsService;
 import com.nighthawk.spring_portfolio.mvc.jokes.Jokes;
 import com.nighthawk.spring_portfolio.mvc.jokes.JokesJpaRepository;

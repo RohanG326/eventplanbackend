@@ -61,7 +61,7 @@ public class ActivitiesApiController {
                                              @RequestParam("location") String location) {
         Activities activity = new Activities(event, date, time, contact, description, location);
         repository.save(activity);
-        return new ResponseEntity<>(event +" is created successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Event is created successfully", HttpStatus.CREATED);
     }
     /*
     The personSearch API looks across database for partial match to term (k,v) passed by RequestEntity body
