@@ -5,7 +5,7 @@ Original Template cloned from https://github.com/nighthawkcoders/spring_portfoli
 ## Features:
 - Activities database
 - Person database
-- JSON Web Tokens
+- Java Web Tokens
 - Jokes Database
 ## To Implement:
 - itinerary database
