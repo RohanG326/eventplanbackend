@@ -35,7 +35,7 @@ public class Activities {
     @Size(min = 2, max = 100)
     public String description;
     @NonNull
-    @Size(min = 5, max = 50)
+    @Size(min = 2, max = 50)
     public String location;
     public Activities(String event, String date, String time, String contact, String description, String location) {
         this.event = event;
